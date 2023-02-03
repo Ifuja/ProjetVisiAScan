@@ -11,7 +11,7 @@ const SignUpScreen = () => {
     const [repeatPassword, setRepeatPassword] = useState('');
 
     const onRegisterPressed = () => {
-        console.warn('SonRegisterPressed');
+        console.warn('OnRegisterPressed');
     };
 
     const onForgotPasswordPressed = () => {

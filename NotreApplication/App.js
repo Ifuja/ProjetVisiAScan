@@ -6,7 +6,7 @@ import SignUpScreen from './src/screens/SignUpScreen/SignUpScreen';
 export default function App() {
   return (
   <SafeAreaView style={styles.container}>
-    <SignUpScreen/>
+    <SignInScreen/>
   </SafeAreaView>
   );
 };

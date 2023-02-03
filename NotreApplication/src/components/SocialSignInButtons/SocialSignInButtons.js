@@ -14,7 +14,7 @@ const SocialSignInButtons = () => {
   const onSignInApple = () => {
     console.warn('onSignInApple');
   };
-  
+
   return (
     <View>
         <CustomButton 
@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 20,
   },
 });
 

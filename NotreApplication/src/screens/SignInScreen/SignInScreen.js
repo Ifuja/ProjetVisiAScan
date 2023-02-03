@@ -4,6 +4,7 @@ import Logo from '../../../assets/images/logo_ia.jpg';
 import CustomInput from "../../components/CustomInput/CustomInput";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import SocialSignInButtons from "../../components/SocialSignInButtons";
+import auth from '@react-native-firebase/auth';
 
 const SignInScreen = () => {
     const [username, setUsername] = useState('');
@@ -14,6 +15,17 @@ const SignInScreen = () => {
 
     const onSignInPressed = () => {
         console.warn('Sign in');
+        auth().signInWithEmailAndPassword('test@test.com', 'test123')
+        .then(() => {
+            console.log('User signed in anonymously');
+        })
+        .catch(error => {
+            if (error.code === 'auth/operation-not-allowed') {
+                console.log('Enable anonymous in your firebase console.');
+            }
+    
+            console.error(error);
+        });
     };
 
     const onForgotPasswordPressed = () => {
