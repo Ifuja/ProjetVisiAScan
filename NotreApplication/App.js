@@ -2,6 +2,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import SignInScreen from './src/screens/SignInScreen/SignInScreen';
 import SignUpScreen from './src/screens/SignUpScreen/SignUpScreen';
+import firebase from './firebase';
 
 export default function App() {
   return (

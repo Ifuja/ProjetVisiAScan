@@ -5,6 +5,7 @@ import CustomInput from "../../components/CustomInput/CustomInput";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import SocialSignInButtons from "../../components/SocialSignInButtons";
 import auth from '@react-native-firebase/auth';
+import { firebase } from "../../../firebase";
 
 const SignInScreen = () => {
     const [username, setUsername] = useState('');
@@ -13,9 +14,17 @@ const SignInScreen = () => {
 
     const {height} = useWindowDimensions();
 
+    const onForgotPasswordPressed = () => {
+        console.warn('onForgotPasswordPressed');
+    };
+
+    const onSignUpPressed = () => {
+        console.warn('onSignUpPressed');
+    }
+
     const onSignInPressed = () => {
         console.warn('Sign in');
-        auth().signInWithEmailAndPassword('test@test.com', 'test123')
+        firebase.auth().signInWithEmailAndPassword('dev@dev.com', 'test123')
         .then(() => {
             console.log('User signed in anonymously');
         })
@@ -27,14 +36,6 @@ const SignInScreen = () => {
             console.error(error);
         });
     };
-
-    const onForgotPasswordPressed = () => {
-        console.warn('onForgotPasswordPressed');
-    };
-
-    const onSignUpPressed = () => {
-        console.warn('onSignUpPressed');
-    }
 
     return (
     <ScrollView>
