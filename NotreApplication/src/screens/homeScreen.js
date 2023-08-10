@@ -7,7 +7,7 @@ import FormButton from '../components/formButton';
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Title>ChatKitty Example</Title>
+      <Title>VisiAScan</Title>
       <FormButton modeValue='contained' title='Logout' />
     </View>
   );
