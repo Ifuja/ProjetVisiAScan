@@ -40,9 +40,10 @@ export default function SignupScreen({ navigation }) {
         onChangeText={(userPassword) => setPassword(userPassword)}
       />
       <FormButton
-        title='Signup'
+        title='Sign up'
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
+        buttonColor='#8A4D76'
         onPress={() => register(displayName, email, password)}
       />
       <IconButton
@@ -58,7 +59,7 @@ export default function SignupScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#FFD700',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
@@ -68,12 +69,12 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   loginButtonLabel: {
-    fontSize: 22
+    fontSize: 21
   },
   navButtonText: {
     fontSize: 18
   },
   navButton: {
-    marginTop: 10
+    marginTop: 16
   }
 });
