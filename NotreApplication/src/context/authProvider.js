@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth/react-native';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth/react-native';
 import { auth } from '../firebase';
 
 export const AuthContext = createContext({});
@@ -17,7 +17,19 @@ export const AuthProvider = ({ children }) => {
         loading,
         setLoading,
         login: async (email, password) => {
-          // TODO
+          setLoading(true);
+          try {
+            const signInWithEmail = await signInWithEmailAndPassword(auth, email, password);
+        
+            // Utilisateur Firebase connecté
+            const currentUser = signInWithEmail.user;
+            setUser(currentUser); // Met à jour la valeur de user avec l'utilisateur connecté
+            console.log("Firebase user connected: ", currentUser);
+          } catch (error) {
+            console.error(error);
+          } finally {
+            setLoading(false);
+          }
         },
         register: async (displayName, email, password) => {
           setLoading(true);
