@@ -22,9 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
+        "googleServicesFile": "./google-services.json",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "googleServicesFile": "./google-services.json",
+      "package": "com.ynovprojetmaster.notreapplication"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -5,33 +5,34 @@ import { Title } from 'react-native-paper';
 import FormButton from '../components/formButton.js';
 import FormInput from '../components/formInput.js';
 import { AuthContext } from '../context/authProvider';
-
-import auth from '@react-native-firebase/auth';
-import { GoogleAuthProvider } from '@react-native-firebase/auth';
-//import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth/react-native'; // Importez ces modules
+import { auth } from '../firebase';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const { user, login } = useContext(AuthContext);
+  //const { loginWithGoogle } = useContext(AuthContext);
 
-  // Connexion avec un compte Google
-  /*const handleGoogleLogin = async () => {
-    const provider = new GoogleAuthProvider();
-  
+  /*** Connexion avec un compte Google ***/
+  const handleGoogleLogin = async () => {
     try {
-      const result = await auth().signInWithPopup(provider);
+      
+      // Obtenez les informations d'identification Google
+      const credential = GoogleAuthProvider.credential(null, null);
+
+      // Connectez-vous avec les informations d'identification
+      const result = await signInWithCredential(auth, credential);
       const user = result.user;
-  
+
       console.log('Logged in with Google:', user);
       // Mettez à jour votre contexte ou faites d'autres actions nécessaires
     } catch (error) {
       console.error('Google login error:', error);
     }
-  };*/
+  };
 
-  // Connexion avec un compte personnalisé 
+  /*** Connexion avec un compte personnalisé ***/
   const handleLogin = async () => {
     try {
       // Appel la fonction de connexion avec l'email et le mot de passe saisis
@@ -83,18 +84,26 @@ export default function LoginScreen({ navigation }) {
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
         buttonColor='#FF0000'
+        onPress={handleGoogleLogin}
+      />
+      <FormButton
+        title='Call'
+        modeValue='contained'
+        labelStyle={styles.loginButtonLabel}
+        buttonColor='#4CAF50'
         onPress={() => {
-          navigation.navigate('User')}
+          navigation.navigate('Call')}
         }
-        //onPress={handleGoogleLogin}
       />
       <FormButton
         title='Sign up here'
         modeValue='text'
         uppercase={false}
         labelStyle={styles.navButtonText}
-        onPress={() => navigation.navigate('Signup')}
+        onPress={() => 
+          navigation.navigate('Signup')}
       />
+
     </View>
   );
 }
@@ -111,7 +120,7 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   loginButtonLabel: {
-    fontSize: 22
+    fontSize: 20
   },
   navButtonText: {
     fontSize: 16
