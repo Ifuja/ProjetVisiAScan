@@ -9,6 +9,23 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const loginWithGoogle = async () => {
+    setLoading(true);
+    try {
+      const provider = new auth.GoogleAuthProvider();
+      const googleSignIn = await auth.signInWithPopup(auth, provider);
+
+      // Utilisateur Firebase connecté via Google
+      const currentUser = googleSignIn.user;
+      setUser(currentUser); // Met à jour la valeur de user avec l'utilisateur connecté
+      console.log('Google user connected: ', currentUser);
+    } catch (error) {
+      console.error('Google login error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -54,7 +71,8 @@ export const AuthProvider = ({ children }) => {
         },
         logout: async () => {
           // TODO
-        }
+        },
+        loginWithGoogle, // Ajout de la fonction de connexion via Google
       }}
     >
       {children}
