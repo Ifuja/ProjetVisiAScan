@@ -1,28 +1,41 @@
 # L'application VisIAscan
 
-## React Native & Firebase
+Gestion d'accès distante via reconnaissance faciale.
 
-Développement d'une application mobile pour Android et iOS avec le framework React Native. 
-Le langage de programmation utilisé est JavaScript. 
+## Description
 
-### Installation
+Une application mobile Android développé avec le framework React Native, permettant aux résidents d'autoriser ou refuser l'accès à distance à leur bâtiment via reconnaissance faciale. Connectée à un interphone et au serveur Firebase, elle offre une expérience sécurisée et pratique pour gérer les entrées et contrôler les personnes autorisées.
+Le langage de programmation utilisé est JavaScript.
 
-1. Ouvrez un terminal et récupérez le projet en exécutant la commande "git clone https://github.com/Ifuja/ProjetVisiAScan.git".
-2. Ouvrez le projet sur Visual Studio Code et dans le terminal entrez la commande "expo start" pour lancer l'application.
-3. Vous aurez le choix d'ouvrir l'application sur votre téléphone ou via un émulateur que vous aurez déjà configuré.
+## Captures d'écran
 
-### Utilisation
+![Capture d'écran de la page d'accueil](screenshots/capture_accueil.JPG)
+*Page d'accueil de l'application*
 
+## Prérequis
 
+Avant d'installer et d'exécuter cette application, assurez-vous d'avoir les éléments suivants :
+- Node.js et npm : Assurez-vous d'avoir Node.js (v14 ou supérieur) et npm (v7 ou supérieur) installés sur votre système. Node.js et npm sont nécessaires pour exécuter le code JavaScript de l'application.
 
-## Expo Go
+- Expo CLI : Vous devez avoir Expo CLI installé globalement sur votre système. Expo CLI est utilisé pour lancer le serveur de développement et exécuter l'application sur un émulateur ou un appareil physique.
 
-### Installation
+- Compte Expo : Créez un compte Expo si vous n'en avez pas déjà un. Un compte Expo est nécessaire pour gérer vos projets, accéder aux fonctionnalités d'Expo et exécuter l'application sur des appareils physiques.
 
-1. Téléchargez l'application Expo Go sur Play Store
-2. Créer un nouvel utilisateur pour l'utilisation d'Expo
-3. Ajouter votre application android en scannant le QR code ou en entrant l'URL correspondant à l'application sur votre ordinateur.
-   
-### Utilisation
+- Compte Firebase : Connectez-vous au compte Firebase de l'équipe pour vous connecter à l'application à la base de données et au serveur d'authentification. (revoir)
 
+- Appareil Android ou Émulateur : Vous aurez besoin d'un appareil Android ou d'un émulateur Android configuré pour tester et exécuter l'application.
 
+## Installation
+
+1. Ouvrez un terminal et clonez le référentiel : "git clone https://github.com/Ifuja/ProjetVisiAScan.git".
+2. Accéder au répertoire de l'application "cd nom-de-lapplication"
+3. Exécuter l'application : "npx expo start"
+Cela lancera le serveur de développement Expo. Vous pouvez maintenant scanner le QR code avec l'application Expo Go sur votre téléphone ou utiliser un émulateur pour voir l'application en marche.
+
+## Configuration
+
+Pour que l'application fonctionne correctement, vous devez configurer les clés d'API nécessaires. Actuellement, notre application est connectée au serveur Firebase pour gérer les appels d'interphone et les autorisations d'entrée. Pour configurer les clés d'API Firebase, suivez ces étapes :
+1. Créer un compte Firebase (si vous n'en avez pas déjà un) et créez un projet Firebase.
+2. Dans le tableau de bord de votre projet Firebase, accédez aux paramètres du projet et recherchez la section "Clés de l'API".
+3. Générez une nouvelle clé API pour le service Firebase Realtime Database et pour le service Firebase Authentication.
+4. Copiez les clés générées et ajoutez-les au fichier de configuration de l'application, situé dans le dossier config à la racine du projet (chemin vers le fichier dans notre projet : src/firebase/index.js)

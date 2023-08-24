@@ -1,33 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, ActivityIndicator } from 'react-native';
+import Video from 'react-native-video';
+import { referenceMovie } from '../firebase/index';
 import { IconButton } from 'react-native-paper';
-import { reference } from '../firebase/index';
 import { getDownloadURL, ref } from 'firebase/storage';
 
-export default function StorageScreen({ navigation }) {
+
+export default function VideoScreen({ navigation }) {
   const [url, setUrl] = useState('');
 
   useEffect(() => {
-    const fetchImage = async () => {
+    const fetchVideo = async () => {
       try {
-        const imageUrl = await getDownloadURL(ref(reference));
-        setUrl(imageUrl);
+        const videoUrl = await getDownloadURL(ref(referenceMovie));
+        setUrl(videoUrl);
       } catch (error) {
-        console.error('Error fetching image URL:', error);
+        console.error('Error fetching video URL:', error);
       }
     };
 
     if (!url) {
-      fetchImage();
+      fetchVideo();
     }
   }, [url]);
-
+  
   return (
     <View style={styles.container}>
       {url ? (
-        <Image
+        <Video
           source={{ uri: url }}
-          style={styles.media}
+          style={styles.media} // Ajustez les styles selon vos besoins
         />
       ) : (
         <ActivityIndicator />
@@ -49,9 +51,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  imageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   media: {
     width: '70%',
     height: '70%',
+  },
+  video: {
+    width: 300,
+    height: 200,
   },
   navButton: {
     marginTop: 16,

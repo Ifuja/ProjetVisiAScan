@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@react-native-firebase/database": "^18.3.0"
-  }
-}

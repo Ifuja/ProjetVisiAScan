@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react';
-
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth/react-native';
 import { auth } from '../firebase';
 

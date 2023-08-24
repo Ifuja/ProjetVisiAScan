@@ -7,6 +7,8 @@ import UserScreen from '../screens/userScreen';
 import UserList from '../screens/userList';
 import CallScreen from '../screens/callScreen';
 import StorageScreen from '../screens/storageScreen';
+import DatabaseScreen from '../screens/databaseScreen';
+import VideoScreen from '../screens/videoScreen';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +21,8 @@ export default function AuthStack() {
       <Stack.Screen name='UserList' component={UserList} />
       <Stack.Screen name='Call' component={CallScreen} />
       <Stack.Screen name='Storage' component={StorageScreen} />
+      <Stack.Screen name='Database' component={DatabaseScreen} />
+      <Stack.Screen name='Video' component={VideoScreen} />
     </Stack.Navigator>
   );
 }

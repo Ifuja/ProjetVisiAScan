@@ -13,7 +13,7 @@ export default function CallScreen({ navigation }) {
         labelStyle={styles.loginButtonLabel}
         buttonColor='grey'
         onPress={() => {
-          navigation.navigate('Storage', { contentType: 'image' })}
+          navigation.navigate('Storage')}
         }
       />
       <FormButton
@@ -22,7 +22,7 @@ export default function CallScreen({ navigation }) {
         labelStyle={styles.loginButtonLabel}
         buttonColor='grey'
         onPress={() => {
-          navigation.navigate('Storage', { contentType: 'video' })}
+          navigation.navigate('Video')}
         }
       />
       <IconButton
