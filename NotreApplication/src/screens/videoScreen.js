@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, ActivityIndicator } from 'react-native';
-import Video from 'react-native-video';
+import React, { useState, useEffect, useRef } from 'react';
+import { StyleSheet, View, ActivityIndicator, Button } from 'react-native';
+import { Video, ResizeMode } from 'expo-av';
 import { referenceMovie } from '../firebase/index';
 import { IconButton } from 'react-native-paper';
 import { getDownloadURL, ref } from 'firebase/storage';
 
-
 export default function VideoScreen({ navigation }) {
   const [url, setUrl] = useState('');
+  const [status, setStatus] = useState({});
+  const videoRef = useRef(null); // Déclarez la référence pour le composant Video
 
   useEffect(() => {
     const fetchVideo = async () => {
       try {
-        const videoUrl = await getDownloadURL(ref(referenceMovie));
-        setUrl(videoUrl);
+        const videoUrlFromFirebase = await getDownloadURL(ref(referenceMovie));
+        setUrl(videoUrlFromFirebase);
       } catch (error) {
         console.error('Error fetching video URL:', error);
       }
@@ -24,16 +25,38 @@ export default function VideoScreen({ navigation }) {
     }
   }, [url]);
   
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (status.isPlaying) {
+        videoRef.current.pauseAsync();
+      } else {
+        videoRef.current.playAsync();
+      }
+    }
+  };
+
   return (
     <View style={styles.container}>
       {url ? (
         <Video
+          ref={videoRef} // Attachez la référence au composant Video
           source={{ uri: url }}
-          style={styles.media} // Ajustez les styles selon vos besoins
+          style={styles.media}
+          useNativeControls
+          resizeMode={ResizeMode.CONTAIN}
+          isLooping
+          onPlaybackStatusUpdate={status => setStatus(status)}
+          onError={(error) => console.error('Video error:', error)}
         />
       ) : (
         <ActivityIndicator />
       )}
+      <View style={styles.buttons}>
+        <Button
+          title={status.isPlaying ? 'Pause' : 'Play'}
+          onPress={togglePlayPause}
+        />
+      </View>
       <IconButton
         icon='keyboard-backspace'
         size={30}
@@ -51,18 +74,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  imageContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   media: {
-    width: '70%',
-    height: '70%',
-  },
-  video: {
-    width: 300,
-    height: 200,
+    flex: 1,
+    width: '100%',
+    height: '100%',
   },
   navButton: {
     marginTop: 16,
