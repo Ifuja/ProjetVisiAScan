@@ -15,7 +15,7 @@ export default function LoginScreen({ navigation }) {
   //const { loginWithGoogle } = useContext(AuthContext);
 
   /*** Connexion avec un compte Google ***/
-  const handleGoogleLogin = async () => {
+  /*const handleGoogleLogin = async () => {
     try {
       
       // Obtenez les informations d'identification Google
@@ -30,7 +30,7 @@ export default function LoginScreen({ navigation }) {
     } catch (error) {
       console.error('Google login error:', error);
     }
-  };
+  };*/
 
   /*** Connexion avec un compte personnalisé ***/
   const handleLogin = async () => {
@@ -76,7 +76,7 @@ export default function LoginScreen({ navigation }) {
         labelStyle={styles.loginButtonLabel}
         buttonColor='#007BFF'
         onPress={() => {
-          navigation.navigate('User')}
+          navigation.navigate('Database')}
         }
       />
       <FormButton
@@ -84,7 +84,7 @@ export default function LoginScreen({ navigation }) {
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
         buttonColor='#FF0000'
-        onPress={handleGoogleLogin}
+        onPress={handleLogin}
       />
       <FormButton
         title='Call'
