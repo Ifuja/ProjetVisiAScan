@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const loginWithGoogle = async () => {
+  /*const loginWithGoogle = async () => {
     setLoading(true);
     try {
       const provider = new auth.GoogleAuthProvider();
@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
-  };
+  };*/
 
   return (
     <AuthContext.Provider
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
         logout: async () => {
           // TODO
         },
-        loginWithGoogle, // Ajout de la fonction de connexion via Google
+        //loginWithGoogle, // Ajout de la fonction de connexion via Google
       }}
     >
       {children}

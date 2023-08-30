@@ -1,7 +1,8 @@
 /*** Page affichant les données saisies sur Realtime Database ***/
+
 import { ref, update } from 'firebase/database';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { database } from '../firebase/index'; // Assurez-vous de corriger le chemin vers votre fichier firebase.js
 import { IconButton, TextInput } from 'react-native-paper';
 import FormButton from '../components/formButton.js';
