@@ -7,20 +7,30 @@ export default function UserScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Title style={styles.titleText}>Users</Title>
+      <Title style={styles.titleText}>VisIAscan Users</Title>
       <FormButton
         title='List'
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
         buttonColor='#8A4D76'
-        onPress={() => navigation.navigate('UserList')}
+        onPress={() => navigation.navigate('UsersList')}
+      />
+      <FormButton
+        title='Database'
+        modeValue='contained'
+        labelStyle={styles.loginButtonLabel}
+        buttonColor='#007BFF'
+        onPress={() => {
+          navigation.navigate('Database')}
+        }
       />
       <IconButton
         icon='keyboard-backspace'
         size={30}
         style={styles.navButton}
         iconColor='#5b3a70'
-        onPress={() => navigation.goBack()}
+        onPress={() => 
+          navigation.navigate('Login')}
       />
     </View>
   );

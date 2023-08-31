@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "922703610991",
+    "firebase_url": "https://user-5a95c-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "user-5a95c",
     "storage_bucket": "user-5a95c.appspot.com"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "922703610991-nufseggcpjhqs09po21ldrduanc05rsv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ynovprojetmaster.notreapplication",
+            "certificate_hash": "04b450b638a2384dcb772ef1f8d8b92a95640ac1"
+          }
+        },
+        {
+          "client_id": "922703610991-rn7a6l5micincavaquupn9hsestvhodj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ynovprojetmaster.notreapplication",
+            "certificate_hash": "25af273314a0b73183057c9b4ccaf571e5ea3c63"
+          }
+        },
         {
           "client_id": "922703610991-0fvd4dd344dhehfn8qp50b8go5c23c3j.apps.googleusercontent.com",
           "client_type": 3

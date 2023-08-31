@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
+import { IconButton } from 'react-native-paper';
 
-export default function UserList({ navigation }) {
+export default function UsersList({ navigation }) {
   const { users } = useState([]);
 
   return (
@@ -10,6 +11,13 @@ export default function UserList({ navigation }) {
         data={users}
         renderItem={({ item }) => <Text style={styles.userItem}>{item.name}</Text>}
         keyExtractor={(item) => item.id.toString()}
+      />
+      <IconButton
+        icon='keyboard-backspace'
+        size={30}
+        style={styles.navButton}
+        iconColor='#5b3a70'
+        onPress={() => navigation.goBack()}
       />
     </View>
   );

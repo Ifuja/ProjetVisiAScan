@@ -11,9 +11,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
@@ -21,16 +18,19 @@
       "supportsTablet": true
     },
     "android": {
-      "adaptiveIcon": {
-        "googleServicesFile": "./google-services.json",
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      },
       "googleServicesFile": "./google-services.json",
       "package": "com.ynovprojetmaster.notreapplication"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "@react-native-firebase/app"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d7e1d899-4901-4a6f-b761-81bb36a7fbe9"
+      }
     }
   }
 }

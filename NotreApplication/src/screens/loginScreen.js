@@ -5,8 +5,7 @@ import { Title } from 'react-native-paper';
 import FormButton from '../components/formButton.js';
 import FormInput from '../components/formInput.js';
 import { AuthContext } from '../context/authProvider';
-import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth/react-native'; // Importez ces modules
-import { auth } from '../firebase';
+//import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -14,39 +13,34 @@ export default function LoginScreen({ navigation }) {
   const { user, login } = useContext(AuthContext);
   //const { loginWithGoogle } = useContext(AuthContext);
 
+  /*GoogleSignin.configure({
+    webClientId: '922703610991-0fvd4dd344dhehfn8qp50b8go5c23c3j.apps.googleusercontent.com', // Remplacez par votre web client ID
+  });*/
+
   /*** Connexion avec un compte Google ***/
   /*const handleGoogleLogin = async () => {
     try {
-      
-      // Obtenez les informations d'identification Google
-      const credential = GoogleAuthProvider.credential(null, null);
-
-      // Connectez-vous avec les informations d'identification
-      const result = await signInWithCredential(auth, credential);
-      const user = result.user;
-
-      console.log('Logged in with Google:', user);
-      // Mettez à jour votre contexte ou faites d'autres actions nécessaires
+      await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+      await loginWithGoogle();
     } catch (error) {
       console.error('Google login error:', error);
     }
   };*/
-
+  
   /*** Connexion avec un compte personnalisé ***/
   const handleLogin = async () => {
     try {
       // Appel la fonction de connexion avec l'email et le mot de passe saisis
-      await login(email, password);
+      const loggedInUser = await login(email, password);
       // Une fois que la connexion est réussie et l'utilisateur est redirigé,
       // la valeur "user" dans le contexte devrait être mise à jour, indiquant que l'utilisateur est connecté
-      if (user) {
-        navigation.navigate('User'); // Redirige vers la page des utilisateurs
+      if (loggedInUser) {
+        navigation.navigate('Users'); // Redirige vers la page des utilisateurs
       }
     } catch (error) {
       // Gére les erreurs de connexion ici
     }
   };
-  
 
   return (
     <View style={styles.container}>
@@ -71,28 +65,28 @@ export default function LoginScreen({ navigation }) {
         onPress={handleLogin} // Appel la fonction handleLogin lors du clic sur le bouton
       />
       <FormButton
-        title='Facebook'
-        modeValue='contained'
-        labelStyle={styles.loginButtonLabel}
-        buttonColor='#007BFF'
-        onPress={() => {
-          navigation.navigate('Database')}
-        }
-      />
-      <FormButton
         title='Google'
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
-        buttonColor='#FF0000'
+        buttonColor='#4764A9'
         onPress={handleLogin}
       />
       <FormButton
         title='Call'
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
-        buttonColor='#4CAF50'
+        buttonColor='#DD4D44'
         onPress={() => {
           navigation.navigate('Call')}
+        }
+      />
+      <FormButton
+        title='Notification'
+        modeValue='contained'
+        labelStyle={styles.loginButtonLabel}
+        buttonColor='#363636'
+        onPress={() => {
+          navigation.navigate('Notification')}
         }
       />
       <FormButton
