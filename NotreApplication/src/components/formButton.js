@@ -19,10 +19,10 @@ export default function FormButton({ title, modeValue, buttonColor, ...rest }) {
 
 const styles = StyleSheet.create({
   button: {
-    marginTop: 12,
+    marginTop: 10,
   },
   buttonContainer: {
     width: width / 2,
-    height: height / 14
+    height: height / 16
   }
 });

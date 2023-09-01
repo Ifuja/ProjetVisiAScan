@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "922703610991-1jse0mhquvuuq9vgk2cqj0pt0ff9d1jh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ynovprojetmaster.notreapplication",
+            "certificate_hash": "4c95b73321c39ef6cbe46b37ceec31240cbe4a7d"
+          }
+        },
+        {
           "client_id": "922703610991-nufseggcpjhqs09po21ldrduanc05rsv.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -28,6 +36,14 @@
           "android_info": {
             "package_name": "com.ynovprojetmaster.notreapplication",
             "certificate_hash": "25af273314a0b73183057c9b4ccaf571e5ea3c63"
+          }
+        },
+        {
+          "client_id": "922703610991-sl0i5bgmvsen8ln5dr2c2ijis833heif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ynovprojetmaster.notreapplication",
+            "certificate_hash": "1135c0c614987bb7e8ebbff5000adcaa3d82015a"
           }
         },
         {
