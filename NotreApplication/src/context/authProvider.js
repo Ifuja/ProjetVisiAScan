@@ -1,29 +1,31 @@
-import React, { createContext, useState } from 'react';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth/react-native';
+import React, { createContext, useState, useEffect } from 'react';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithCredential, GoogleAuthProvider } from 'firebase/auth/react-native';
 import { auth } from '../firebase';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [ user, setUser ] = useState();
+  const [ loading, setLoading ] = useState(false);
+  const [ initializing, setInitializing ] = useState(true);
+ 
+  GoogleSignin.configure({
+    webClientId: '922703610991-0fvd4dd344dhehfn8qp50b8go5c23c3j.apps.googleusercontent.com', // Remplacez par votre web client ID
+    
+  });
 
-  /*const loginWithGoogle = async () => {
-    setLoading(true);
-    try {
-      const provider = new auth.GoogleAuthProvider();
-      const googleSignIn = await auth.signInWithPopup(auth, provider);
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
 
-      // Utilisateur Firebase connecté via Google
-      const currentUser = googleSignIn.user;
-      setUser(currentUser); // Met à jour la valeur de user avec l'utilisateur connecté
-      console.log('Google user connected: ', currentUser);
-    } catch (error) {
-      console.error('Google login error:', error);
-    } finally {
-      setLoading(false);
-    }
-  };*/
+  useEffect(() => {
+    const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
+    return subscriber;
+  }, []);
+
+  if (initializing) return null;
 
   return (
     <AuthContext.Provider
@@ -69,11 +71,41 @@ export const AuthProvider = ({ children }) => {
           }
         },
         logout: async () => {
-          // TODO
+          try {
+            await GoogleSignin.revokeAccess();
+            await auth.signOut(); // Déconnexion de l'utilisateur
+            setUser(null); // Met à jour la valeur de user pour indiquer que l'utilisateur n'est pas connecté
+          } catch (error) {
+            console.error('Logout error:', error);
+          }
         },
-        //loginWithGoogle, // Ajout de la fonction de connexion via Google
-      }}
-    >
+        loginWithGoogle: async () => { // Ajout de la fonction de connexion via Google
+          try {
+            await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true});
+            // Get the users ID token
+            const { idToken } = await GoogleSignin.signIn();
+            
+            // Create a Google credential with the token
+            const googleCredential = GoogleAuthProvider.credential(idToken);
+            
+            // Sign-in the user with the credential
+            const googleSignin = await signInWithCredential(auth, googleCredential);
+            
+            const currentUser = googleSignin.user;
+      
+            // Mise à jour du profil de l'utilisateur avec des informations de Google
+            await updateProfile(currentUser, {
+              displayName: currentUser.displayName || 'Utilisateur Google',
+              photoURL: currentUser.photoURL || '',
+            });
+            // Mise à jour du contexte d'authentification avec l'utilisateur connecté
+            setUser(currentUser);
+            console.log(currentUser);
+          } catch (error) {
+            console.error('Google login error:', error);
+          }
+        }
+      }}>
       {children}
     </AuthContext.Provider>
   );
