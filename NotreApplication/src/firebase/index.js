@@ -34,15 +34,16 @@ const referenceMovie = ref(storageMovie, '/movies/Sade.mp4');
 const database = getDatabase(app, 'https://user-5a95c-default-rtdb.europe-west1.firebasedatabase.app');
 
 // Use Database
-const refDatabase = dbRef(database, 'my/position/to/value');
+const refDatabase = dbRef(database, '/users/noms');
 
 // Initialize Firestore
-const db = getFirestore(app);
+const firestore = getFirestore(app);
 
 export {
   reference,
   referenceMovie,
   database,
   refDatabase,
-  auth
+  auth,
+  firestore
 };

@@ -11,7 +11,7 @@ export default function DatabaseScreen({ navigation }) {
     const [value, setValue] = useState('');
 
     function create () {
-        update(ref(database, 'my/position/to/value'), {
+        update(ref(database, 'users'), {
             test: value
         })
         .then(() => {
