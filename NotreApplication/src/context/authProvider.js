@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithCredential, GoogleAuthProvider } from 'firebase/auth/react-native';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithCredential, GoogleAuthProvider} from 'firebase/auth/react-native';
 import { auth } from '../firebase';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
@@ -38,9 +38,12 @@ export const AuthProvider = ({ children }) => {
           setLoading(true);
           try {
             const signInWithEmail = await signInWithEmailAndPassword(auth, email, password);
-        
+          
             // Utilisateur Firebase connecté
             const currentUser = signInWithEmail.user;
+            if (!currentUser) {
+              signInWithEmailAndPassword;
+            }
             setUser(currentUser); // Met à jour la valeur de user avec l'utilisateur connecté
             console.log("Firebase user connected: ", currentUser);
           } catch (error) {
@@ -62,21 +65,11 @@ export const AuthProvider = ({ children }) => {
 
             // Signed-in Firebase user
             const currentUser = userCredential.user;
-
             console.log("Firebase user created: ", currentUser);
           } catch (error) {
             console.error(error);
           } finally {
             setLoading(false);
-          }
-        },
-        logout: async () => {
-          try {
-            await GoogleSignin.revokeAccess();
-            await auth.signOut(); // Déconnexion de l'utilisateur
-            setUser(null); // Met à jour la valeur de user pour indiquer que l'utilisateur n'est pas connecté
-          } catch (error) {
-            console.error('Logout error:', error);
           }
         },
         loginWithGoogle: async () => { // Ajout de la fonction de connexion via Google
@@ -99,10 +92,36 @@ export const AuthProvider = ({ children }) => {
               photoURL: currentUser.photoURL || '',
             });
             // Mise à jour du contexte d'authentification avec l'utilisateur connecté
+            if (!currentUser) {
+              googleSignin;
+              signInWithEmailAndPassword;
+            }
+            //await auth.signIn();
             setUser(currentUser);
             console.log(currentUser);
           } catch (error) {
             console.error('Google login error:', error);
+          }
+        },
+        logoutWithGoogle: async () => {
+          try {     
+            await auth.signOut();
+
+            // Révoquer l'accès Google indépendamment de la connexion Firebase
+            await GoogleSignin.revokeAccess();
+        
+            // Mettre à jour le contexte d'authentification pour indiquer que l'utilisateur n'est pas connecté
+            setUser(null);
+          } catch (error) {
+            console.error('Logout error:', error);
+          }
+        },
+        logout: async () => {
+          try {
+            await auth.signOut();
+            setUser(null);
+          } catch (error) {
+            console.error('Logout error:', error);
           }
         }
       }}>

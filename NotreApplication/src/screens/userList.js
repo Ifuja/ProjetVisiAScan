@@ -1,16 +1,46 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { ActivityIndicator, View, Text, FlatList, StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
 
 export default function UsersList({ navigation }) {
-  const { users } = useState([]);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true); // Set loading to true on component mount
+
+  useEffect(() => {
+    /*const subscriber = firestore
+      .collection('Users')
+      .onSnapshot(querySnapshot => {
+        const users = [];
+  
+        querySnapshot.forEach(documentSnapshot => {
+          users.push({
+            ...documentSnapshot.data(),
+            key: documentSnapshot.id,
+          });
+        });
+  
+        setUsers(users);
+        setLoading(false);
+      });
+  
+    // Unsubscribe from events when no longer in use
+    return () => subscriber();*/
+  }, []);
+
+  if (loading) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <View style={styles.container}>
       <FlatList
         data={users}
-        renderItem={({ item }) => <Text style={styles.userItem}>{item.name}</Text>}
-        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.userItem}>
+            <Text>User ID: {item.id}</Text>
+          </View>
+        )}
+        keyExtractor={(item, index) => index.toString()}
       />
       <IconButton
         icon='keyboard-backspace'
@@ -29,7 +59,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   userItem: {
-    fontSize: 18,
+    alignItems:'center',
+    height: 50,
     marginVertical: 10,
     paddingHorizontal: 20,
   },
