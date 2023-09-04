@@ -10,7 +10,7 @@ Le langage de programmation utilisé est JavaScript.
 ## Captures d'écran
 
 <div style="display: flex; justify-content: space-between;">
-    <img src="screenshots/capture_accueil.JPG" alt="Page d'accueil" width="200">
+    <img src="screenshots/ecran_accueil.JPG" alt="Page d'accueil" width="200">
     <img src="screenshots/ecran_inscription.JPG" alt="Page d'inscription" width="200">
     <img src="screenshots/ecran_menu_app.JPG" alt="Menu" width="200">
 </div>
@@ -18,7 +18,7 @@ Le langage de programmation utilisé est JavaScript.
 ## Prérequis
 
 Avant d'installer et d'exécuter cette application, assurez-vous d'avoir les éléments suivants :
-- Node.js et npm : Assurez-vous d'avoir Node.js (v14 ou supérieur) et npm (v7 ou supérieur) installés sur votre système. Node.js et npm sont nécessaires pour exécuter le code JavaScript de l'application.
+- Node.js et npm : Assurez-vous d'avoir Node.js (v18.13.0) et npm (9.3.1) installés sur votre système. Node.js et npm sont nécessaires pour exécuter le code JavaScript de l'application.
 
 - Expo CLI : Vous devez avoir Expo CLI installé globalement sur votre système. Expo CLI est utilisé pour lancer le serveur de développement et exécuter l'application sur un émulateur ou un appareil physique.
 
