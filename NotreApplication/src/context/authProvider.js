@@ -2,6 +2,8 @@ import React, { createContext, useState, useEffect } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, signInWithCredential, GoogleAuthProvider} from 'firebase/auth/react-native';
 import { auth } from '../firebase';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { database } from '../firebase/index';
+import { remove, set, ref as dbRef } from "firebase/database";
 
 export const AuthContext = createContext({});
 
@@ -10,9 +12,12 @@ export const AuthProvider = ({ children }) => {
   const [ loading, setLoading ] = useState(false);
   const [ initializing, setInitializing ] = useState(true);
  
+  const userToken = 'd4XymCvyQIy5pd9KEmOkba:APA91bGCS5T0s_cAJtzMV6ejHq58vFWR1tyZtPJjAgZy2ICiNw-kOM0oOWu6zCV_pN9ylFc0MbEWCQsbjGIY1UUH3s74Rd03DmNMKk8njO9XEcgv0eAeY_rcrWBpPg5NGKpOJSLyGxYH';
+  // Utilisez dbRef pour créer une référence à la base de données Firebase
+  const tokenRef = dbRef(database, 'token/user1');
+
   GoogleSignin.configure({
     webClientId: '922703610991-0fvd4dd344dhehfn8qp50b8go5c23c3j.apps.googleusercontent.com', // Remplacez par votre web client ID
-    
   });
 
   function onAuthStateChanged(user) {
@@ -38,7 +43,6 @@ export const AuthProvider = ({ children }) => {
           setLoading(true);
           try {
             const signInWithEmail = await signInWithEmailAndPassword(auth, email, password);
-          
             // Utilisateur Firebase connecté
             const currentUser = signInWithEmail.user;
             if (!currentUser) {
@@ -46,6 +50,13 @@ export const AuthProvider = ({ children }) => {
             }
             setUser(currentUser); // Met à jour la valeur de user avec l'utilisateur connecté
             console.log("Firebase user connected: ", currentUser);
+            set(tokenRef, userToken)
+              .then(() => {
+                console.log('Token stocké avec succès');
+              })
+              .catch((error) => {
+                console.error('Erreur lors de la sauvegarde du token :', error);
+              });
           } catch (error) {
             console.error(error);
           } finally {
@@ -99,6 +110,13 @@ export const AuthProvider = ({ children }) => {
             //await auth.signIn();
             setUser(currentUser);
             console.log(currentUser);
+            set(tokenRef, userToken)
+              .then(() => {
+                console.log('Token stocké avec succès');
+              })
+              .catch((error) => {
+                console.error('Erreur lors de la sauvegarde du token :', error);
+              });
           } catch (error) {
             console.error('Google login error:', error);
           }
@@ -112,6 +130,7 @@ export const AuthProvider = ({ children }) => {
         
             // Mettre à jour le contexte d'authentification pour indiquer que l'utilisateur n'est pas connecté
             setUser(null);
+            remove(tokenRef);
           } catch (error) {
             console.error('Logout error:', error);
           }
@@ -120,6 +139,7 @@ export const AuthProvider = ({ children }) => {
           try {
             await auth.signOut();
             setUser(null);
+            remove(tokenRef);
           } catch (error) {
             console.error('Logout error:', error);
           }

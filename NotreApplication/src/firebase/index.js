@@ -35,6 +35,7 @@ const database = getDatabase(app, 'https://user-5a95c-default-rtdb.europe-west1.
 
 // Use Database
 const refDatabase = dbRef(database, '/users/noms');
+const refData = dbRef(database, '/token/');
 
 // Initialize Firestore
 const firestore = getFirestore(app);
@@ -44,6 +45,7 @@ export {
   referenceMovie,
   database,
   refDatabase,
+  refData,
   auth,
   firestore
 };
