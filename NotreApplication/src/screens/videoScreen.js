@@ -41,7 +41,7 @@ export default function VideoScreen({ navigation }) {
         source={require('../../assets/ia.gif')} // Remplacez par le chemin de votre fichier GIF
         style={styles.backgroundImage}>
         <View style={styles.buttonContainer}>
-          <Title style={styles.titleText}>VisiaScan Pictures</Title>
+          <Title style={styles.titleText}>VisiaScan Movies</Title>
           {url ? (
             <Video
               ref={videoRef} // Attachez la référence au composant Video
