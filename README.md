@@ -9,8 +9,11 @@ Le langage de programmation utilisé est JavaScript.
 
 ## Captures d'écran
 
-![Capture d'écran de la page d'accueil](screenshots/capture_accueil.JPG)
-*Page d'accueil de l'application*
+<div style="display: flex; justify-content: space-between;">
+    <img src="screenshots/capture_accueil.JPG" alt="Page d'accueil" width="200">
+    <img src="screenshots/ecran_inscription.JPG" alt="Page d'inscription" width="200">
+    <img src="screenshots/ecran_menu_app.JPG" alt="Menu" width="200">
+</div>
 
 ## Prérequis
 
@@ -21,7 +24,7 @@ Avant d'installer et d'exécuter cette application, assurez-vous d'avoir les él
 
 - Compte Expo : Créez un compte Expo si vous n'en avez pas déjà un. Un compte Expo est nécessaire pour gérer vos projets, accéder aux fonctionnalités d'Expo et exécuter l'application sur des appareils physiques.
 
-- Compte Firebase : Connectez-vous au compte Firebase de l'équipe pour vous connecter à l'application à la base de données et au serveur d'authentification. (revoir)
+- Compte Firebase : Créez un compte Firebase en ajoutant également une application Android.
 
 - Appareil Android ou Émulateur : Vous aurez besoin d'un appareil Android ou d'un émulateur Android configuré pour tester et exécuter l'application.
 
