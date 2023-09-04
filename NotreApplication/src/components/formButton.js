@@ -9,7 +9,7 @@ export default function FormButton({ title, modeValue, buttonColor, ...rest }) {
     <Button
       mode={modeValue}
       {...rest}
-      style={[styles.button, { backgroundColor: buttonColor }]}
+      style={[styles.button, { backgroundColor: buttonColor}]}
       contentStyle={styles.buttonContainer}
     >
       {title}
@@ -20,9 +20,13 @@ export default function FormButton({ title, modeValue, buttonColor, ...rest }) {
 const styles = StyleSheet.create({
   button: {
     marginTop: 10,
+    justifyContent: 'center',
+    alignItems:'center'
   },
   buttonContainer: {
-    width: width / 2,
-    height: height / 16
+    width: width / 1.5,
+    height: height / 16,
+    alignItems:'center',
+    borderRadius: 10
   }
 });
