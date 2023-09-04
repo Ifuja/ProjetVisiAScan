@@ -13,6 +13,7 @@ Le langage de programmation utilisé est JavaScript.
     <img src="screenshots/ecran_accueil.JPG" alt="Page d'accueil" width="200">
     <img src="screenshots/ecran_inscription.JPG" alt="Page d'inscription" width="200">
     <img src="screenshots/ecran_menu_app.JPG" alt="Menu" width="200">
+    <img src="screenshots/ecran_liste_users.JPG" alt="Menu" width="200">
 </div>
 
 ## Prérequis
