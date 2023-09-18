@@ -11,23 +11,36 @@ Le langage de programmation utilisé est JavaScript.
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
     <img src="screenshots/ecran_accueil.JPG" alt="Page d'accueil" width="200">
-    <p style="margin-top: 5px;">Page d'accueil</p>
+    <p>Page d'accueil</p>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
     <img src="screenshots/ecran_inscription.JPG" alt="Page d'inscription" width="200">
-    <p style="margin-top: 5px;">Page d'inscription</p>
+    <p>Page d'inscription</p>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
     <img src="screenshots/ecran_menu_app.JPG" alt="Menu" width="200">
-    <p style="margin-top: 5px;">Menu</p>
+    <p>Menu</p>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
     <img src="screenshots/ecran_liste_users.JPG" alt="Liste des utilisateurs" width="200">
-    <p style="margin-top: 5px;">Liste des utilisateurs</p>
+    <p>Liste des utilisateurs</p>
 </div>
+
+## Prérequis
+
+Avant d'installer et d'exécuter cette application, assurez-vous d'avoir les éléments suivants :
+- Node.js et npm : Assurez-vous d'avoir Node.js (v18.13.0) et npm (9.3.1) installés sur votre système. Node.js et npm sont nécessaires pour exécuter le code JavaScript de l'application.
+
+- Expo CLI : Vous devez avoir Expo CLI installé globalement sur votre système. Expo CLI est utilisé pour lancer le serveur de développement et exécuter l'application sur un émulateur ou un appareil physique.
+
+- Compte Expo : Créez un compte Expo si vous n'en avez pas déjà un. Un compte Expo est nécessaire pour gérer vos projets, accéder aux fonctionnalités d'Expo et exécuter l'application sur des appareils physiques.
+
+- Compte Firebase : Créez un compte Firebase en ajoutant également une application Android.
+
+- Appareil Android ou Émulateur : Vous aurez besoin d'un appareil Android ou d'un émulateur Android configuré pour tester et exécuter l'application.
 
 ## Installation
 
