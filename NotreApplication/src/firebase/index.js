@@ -27,7 +27,7 @@ const storage = getStorage(app);
 const storageMovie = getStorage(app, 'gs://user-5a95c.appspot.com');
 
 // Use Storage
-const reference = ref(storage, '/pictures/couleurs.jpg');
+const reference = ref(storage, '/call/Clement/Clement.png');
 const referenceMovie = ref(storageMovie, '/movies/Sade.mp4');
 
 // Initialize Database

@@ -91,16 +91,18 @@ export const AuthProvider = ({ children }) => {
             
             // Create a Google credential with the token
             const googleCredential = GoogleAuthProvider.credential(idToken);
-            
+
             // Sign-in the user with the credential
             const googleSignin = await signInWithCredential(auth, googleCredential);
             
             const currentUser = googleSignin.user;
+
+            const photoURL = currentUser.photoURL || '../../assets/logo_app.png';
       
             // Mise à jour du profil de l'utilisateur avec des informations de Google
             await updateProfile(currentUser, {
               displayName: currentUser.displayName || 'Utilisateur Google',
-              photoURL: currentUser.photoURL || '',
+              photoURL: photoURL,
             });
             // Mise à jour du contexte d'authentification avec l'utilisateur connecté
             if (!currentUser) {
@@ -122,17 +124,19 @@ export const AuthProvider = ({ children }) => {
           }
         },
         logoutWithGoogle: async () => {
-          try {     
-            await auth.signOut();
-
-            // Révoquer l'accès Google indépendamment de la connexion Firebase
+          try {
+            // Révoquer l'accès au compte Google
             await GoogleSignin.revokeAccess();
+            // Déconnecter l'utilisateur de son compte Google
+            await GoogleSignin.signOut();
+            // Vous pouvez effectuer d'autres actions de déconnexion ici, comme déconnecter l'utilisateur de votre propre système d'authentification si nécessaire.
+            console.log('Déconnexion réussie.');
         
             // Mettre à jour le contexte d'authentification pour indiquer que l'utilisateur n'est pas connecté
             setUser(null);
             remove(tokenRef);
           } catch (error) {
-            console.error('Logout error:', error);
+            console.error('Erreur lors de la déconnexion de Google :', error);
           }
         },
         logout: async () => {
@@ -140,6 +144,7 @@ export const AuthProvider = ({ children }) => {
             await auth.signOut();
             setUser(null);
             remove(tokenRef);
+            console.log('Vous êtes déconnecté.');
           } catch (error) {
             console.error('Logout error:', error);
           }

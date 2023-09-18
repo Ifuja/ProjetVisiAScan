@@ -11,13 +11,16 @@ import LoggedInView from '../screens/loggedInView';
 import UserScreen from '../screens/userScreen';
 import DatabaseScreen from '../screens/databaseScreen';
 import UserList from '../screens/userList';
+import ChatScreen from '../screens/chatScreen';
+import HomeScreen from '../screens/homeScreen';
 
 const Stack = createStackNavigator();
 
 export default function AuthStack() {
 
   return (
-    <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
+    <Stack.Navigator initialRouteName='Home' screenOptions={{ headerShown: false }}>
+      <Stack.Screen name='Home' component={HomeScreen} />
       <Stack.Screen name='Login' component={LoginScreen} />
       <Stack.Screen name='LoggedInView' component={LoggedInView} />
       <Stack.Screen name='Signup' component={SignupScreen} />
@@ -28,6 +31,7 @@ export default function AuthStack() {
       <Stack.Screen name='UsersList' component={UserList} />
       <Stack.Screen name='Notification' component={NotificationScreen} />
       <Stack.Screen name='Database' component={DatabaseScreen} />
+      <Stack.Screen name='Chat' component={ChatScreen} />
     </Stack.Navigator>
   );
 }
