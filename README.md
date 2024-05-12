@@ -4,7 +4,7 @@ Gestion d'accès distante via reconnaissance faciale.
 
 ## Description
 
-Une application mobile Android développé avec le framework React Native, permettant aux résidents d'autoriser ou refuser l'accès à distance à leur bâtiment via reconnaissance faciale. Connectée à un interphone et au serveur Firebase, elle offre une expérience sécurisée et pratique pour gérer les entrées et contrôler les personnes autorisées.
+Une application mobile Android développé avec le framework React Native, permettant aux résidents d'autoriser ou refuser l'accès à distance à leur bâtiment grâce à la reconnaissance faciale. Connectée à un interphone et au serveur Firebase, elle offre une expérience sécurisée et pratique pour gérer les entrées et contrôler les personnes autorisées.
 Le langage de programmation utilisé est JavaScript.
 
 ## Captures d'écran
