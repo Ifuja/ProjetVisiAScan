@@ -1,4 +1,4 @@
-# L'application VisIAscan
+!# L'application VisIAscan
 
 Gestion d'accès distante via reconnaissance faciale.
 
@@ -9,23 +9,11 @@ Le langage de programmation utilisé est JavaScript.
 
 ## Captures d'écran
 
-<div style="display: flex; justify-content: space-around;">
-    <div style="flex: 1; text-align: center;">
-        <img src="screenshots/ecran_accueil.JPG" alt="Page d'accueil" width="200">
-        <p>Page d'accueil</p>
-    </div>
-    <div style="flex: 1; text-align: center;">
-        <img src="screenshots/ecran_inscription.JPG" alt="Page d'inscription" width="200">
-        <p>Page d'inscription</p>
-    </div>
-    <div style="flex: 1; text-align: center;">
-        <img src="screenshots/ecran_menu_app.JPG" alt="Menu" width="200">
-        <p>Menu</p>
-    </div>
-    <div style="flex: 1; text-align: center;">
-        <img src="screenshots/ecran_liste_users.JPG" alt="Liste des utilisateurs" width="200">
-        <p>Liste des utilisateurs</p>
-    </div>
+<div style="display: flex; justify-content: center;">
+    <img src="screenshots/ecran_accueil.JPG" alt="Page d'accueil" style="width: 200px; margin-right: 10px;">
+    <img src="screenshots/ecran_inscription.JPG" alt="Page d'inscription" style="width: 200px; margin-right: 10px;">
+    <img src="screenshots/ecran_menu_app.JPG" alt="Menu" style="width: 200px; margin-right: 10px;">
+    <img src="screenshots/ecran_liste_users.JPG" alt="Liste des utilisateurs" style="width: 200px; margin-right: 10px;">
 </div>
 
 ## Prérequis
