@@ -1,4 +1,4 @@
-!# L'application VisIAscan (projet scolaire)
+# L'application VisIAscan (projet scolaire)
 
 Gestion d'accès distante via reconnaissance faciale.
 
