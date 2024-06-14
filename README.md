@@ -1,4 +1,4 @@
-!# L'application VisIAscan
+!# L'application VisIAscan (projet scolaire)
 
 Gestion d'accès distante via reconnaissance faciale.
 
@@ -31,9 +31,15 @@ Avant d'installer et d'exécuter cette application, assurez-vous d'avoir les él
 
 ## Installation
 
-1. Ouvrez un terminal et clonez le référentiel : "git clone https://github.com/Ifuja/ProjetVisiAScan.git".
-2. Accéder au répertoire de l'application "cd nom-de-lapplication"
-3. Exécuter l'application : "npx expo start"
+1. Ouvrez un terminal et clonez le référentiel :
+   ```sh
+   git clone https://github.com/Ifuja/ProjetVisiAScan.git
+3. Accéder au répertoire de l'application :
+   ```sh
+   cd nom-de-lapplication
+5. Exécuter l'application :
+   ```sh
+   npx expo start
 Cela lancera le serveur de développement Expo. Vous pouvez maintenant scanner le QR code avec l'application Expo Go sur votre téléphone ou utiliser un émulateur pour voir l'application en marche.
 
 ## Configuration
